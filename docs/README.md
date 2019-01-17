@@ -34,6 +34,7 @@
   We use a tool named **mjpeg-streamer** to help us stream on the Raspberry Pi. It can be used to stream JPEG files over IP-based network from a webcam to various browsers. Furthermore, It's written for embedded devices with limited resources  in terms RAM and CPU.
 
 The complete source code can be found on github : [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer)
+
 One can set up the server by following steps:
 
 #### Preparation
