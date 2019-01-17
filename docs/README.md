@@ -25,7 +25,7 @@
 * Internet
 
 ## Server site
-![server](IMG_4095.JPG)
+![server](IMG_4104.JPG)
 
 ### target 
   Server records the video, and streams to localhost, therefore others can watch the live broadcast on the browser. Additionally, the camera can rotate according to the user's head movements which might be far away.
@@ -37,16 +37,16 @@ The complete source code can be found on github : [mjpg-streamer](https://github
 One can set up the server by following steps:
 
 1. Preparation
-  Fist, check that Raspberry Pi is conneted to Wi-Fi, and record the IP address of two Raspberry Pi.
-  To find the IP, simply type command below:
-  ``` bash
-  $ ifconfig
-  ```
-  After that, connect the Pi camera to the Raspberry Pi, and type:
-  ```bash
-  $ sudo raspi-config
-  ```
-  then enable the camera. 
+   Fist, check that Raspberry Pi is conneted to Wi-Fi, and record the IP address of two Raspberry Pi.
+   To find the IP, simply type command below:
+   ``` bash
+   $ ifconfig
+   ```
+   After that, connect the Pi camera to the Raspberry Pi, and type:
+   ```bash
+   $ sudo raspi-config
+   ```
+   then enable the camera. 
   
 2. Set up the mjpg-streamer
    clone the repo from the website:
