@@ -89,10 +89,44 @@ Equip the server Raspberry Pi eith stepper motor.
 The detail can seen [here](https://blog.everlearn.tw/%E7%95%B6-python-%E9%81%87%E4%B8%8A-raspberry-pi/raspberry-pi-3-model-b-%E5%88%A9%E7%94%A8-uln2003a-28byj-48-%E9%A9%85%E5%8B%95%E6%9D%BF%E6%8E%A7%E5%88%B6%E6%AD%A5%E9%80%B2%E9%A6%AC%E9%81%94)
 
 put the server/motor.py (in guthub repo) in the server. The server receives the signal senr from the client, which tells the **destination** of the camera should be, then the motor rotates according to that.
+Note: The 8th line in the motor.py should be modufied so the IP is the server's.
 
-> Note: We transmit the **destination** instead of **how much angle should be rotate in this step** is: if the internet condition is bad, some of the package get lost, the motor can still arrive the correct position.
+When all is done, run the server/run.sh to make server run.
+```bash
+bash run.sh
+```
+
+> Note: We transmit the **"destination"** instead of **"how much angle should be rotate in this step"** is: if the internet condition is bad, some of the package get lost, the motor can still arrive the correct position.
+   
    
 ## Client site
 ![client](IMG_4097.JPG)
 ### Target
+   The client detects the head movements, calculates the destination fo the camera should be, and sends to the server.
+   
+### Preparation
+  After the server is already set, use the smartphone to browse to the video, and put it in the HMD.
+  
+### Detect the head's movement
+  We use MPU6050 to detect head motion. There's a gyroscope inside, which can sense the **angular velocity**.
+  Note: The component gad beter been welded, so the pi can receive the signal successfully.
+  
+### Angle calculation
+  We write a integrator to calculate the destination of the head motion, however, the raw data from the MPU6050 is very unstable. To cpoe with this problem, we use the following method:
 
+1. Filter
+When the head motion is relative small, cinsuder the trival angular speed as 0, so the signal sent to the server would be more stable.    
+2. Discretalize
+We devide the raw value by a scalar, so the signal in a given rage would output the same value (angle velocity). Therefore, the signal would be more stable.
+
+Note: The 2 parameters can be modified in the client/mpu6050.py
+
+### Signal transmition
+  We transnit the signal between server and client by **socket**, instead **bluetooth**. Because in real usage, the distance between server and client might be far away, so transmit the signal on the internet is a better choise.
+
+To get the client start, put the codes under client/ in the client server, then type:
+```bash
+bash run.sh
+```
+Note: The server IP in client/hmd.py should be modified to the correct server IP.
+   
