@@ -1,5 +1,3 @@
-# My first page !
+# 2018 Fall Embedded System Final Project
 
-```python
-print('Hello git')
-```
+![vr_sample](05.jpg)
