@@ -114,9 +114,9 @@ bash run.sh
 ### Angle calculation
   We write a integrator to calculate the destination of the head motion, however, the raw data from the MPU6050 is very unstable. To cpoe with this problem, we use the following method:
 
-1. Filter
+**1. Filter:**
 When the head motion is relative small, cinsuder the trival angular speed as 0, so the signal sent to the server would be more stable.    
-2. Discretalize
+**2. Discretalize:**
 We devide the raw value by a scalar, so the signal in a given rage would output the same value (angle velocity). Therefore, the signal would be more stable.
 
 Note: The 2 parameters can be modified in the client/mpu6050.py
@@ -130,3 +130,7 @@ bash run.sh
 ```
 Note: The server IP in client/hmd.py should be modified to the correct server IP.
    
+## Demo video
+[link](https://www.youtube.com/watch?v=-KDOYl6tp2Y&feature=share)
+
+**Have fun with this project !**
