@@ -36,7 +36,7 @@
 The complete source code can be found on github : [mjpg-streamer](https://github.com/jacksonliam/mjpg-streamer)
 One can set up the server by following steps:
 
-1. Preparation
+#### Preparation
    Fist, check that Raspberry Pi is conneted to Wi-Fi, and record the IP address of two Raspberry Pi.
    To find the IP, simply type command below:
    ``` bash
@@ -48,7 +48,7 @@ One can set up the server by following steps:
    ```
    then enable the camera. 
   
-2. Set up the mjpg-streamer
+#### Set up the mjpg-streamer
    clone the repo from the website:
    ```
    $ git clone https://github.com/jacksonliam/mjpg-streamer.git
@@ -75,12 +75,24 @@ One can set up the server by following steps:
    $ ./mjpg_streamer -o "output_http.so -w ./www" -i "input_raspicam.so"
    ```
    
-   We can see the video by go to the link in the browser:
+   We can see the video by going to the link in the browser:
    ```
    http://HOSTNAME:8080/?action=stream
    ```
-   where the HOSTNAME is the IP address of the server Raspberry Pi
+   where the **HOSTNAME** is the IP address of the server Raspberry Pi
+   Now we can use smartphone to watch the streaming video, and put it in the HMD.
+
+   reference : https://desertbot.io/blog/how-to-stream-the-picamera
+
+### Make the camera rotate
+Equip the server Raspberry Pi eith stepper motor. 
+The detail can seen [here](https://blog.everlearn.tw/%E7%95%B6-python-%E9%81%87%E4%B8%8A-raspberry-pi/raspberry-pi-3-model-b-%E5%88%A9%E7%94%A8-uln2003a-28byj-48-%E9%A9%85%E5%8B%95%E6%9D%BF%E6%8E%A7%E5%88%B6%E6%AD%A5%E9%80%B2%E9%A6%AC%E9%81%94)
+
+put the server/motor.py (in guthub repo) in the server. The server receives the signal senr from the client, which tells the **destination** of the camera should be, then the motor rotates according to that.
+
+> Note: We transmit the **destination** instead of **how much angle should be rotate in this step** is: if the internet condition is bad, some of the package get lost, the motor can still arrive the correct position.
    
 ## Client site
 ![client](IMG_4097.JPG)
+### Target
 
