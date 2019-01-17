@@ -110,7 +110,7 @@ bash run.sh
   
 ### Detect the head's movement
   We use MPU6050 to detect head motion. There's a gyroscope inside, which can sense the **angular velocity**.
-  Note: The component gad beter been welded, so the pi can receive the signal successfully.
+  Note that The component had beter been welded, so the pi can receive the signal successfully.
   
 ### Angle calculation
   We write a integrator to calculate the destination of the head motion, however, the raw data from the MPU6050 is very unstable. To cpoe with this problem, we use the following method:
